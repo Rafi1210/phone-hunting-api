@@ -73,33 +73,42 @@ const showPhoneDetails = (phone) => {
   console.log(phone);
   const phoneName = document.getElementById("phone-name");
   phoneName.innerText = phone.name;
+
   const showDetailContainer = document.getElementById("show-detail-container");
   showDetailContainer.innerHTML = `
- <div class="flex justify-center">
-    <img src="${phone.image}" alt="Phone Image"/>
-  </div>
-  <h2 class="text-xl font-bold text-sky-800 flex justify-center p-4">Main Features</h2>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Display Size : </span> ${phone?.mainFeatures?.displaySize}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Chipset : </span> ${phone?.mainFeatures?.chipSet}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Storage : </span> ${phone?.mainFeatures?.storage}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Memory : </span> ${phone?.mainFeatures?.memory}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Sensors : </span> ${phone?.mainFeatures?.sensors}</p>
-  
-  <h2 class="text-xl font-bold text-sky-800 flex justify-center p-4">Others</h2>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Bluetooth: </span> ${phone?.others?.Bluetooth}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">GPS : </span> ${phone?.others?.GPS}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">NFC : </span> ${phone?.others?.NFC}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Radio : </span> ${phone?.others?.Radio}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">USB : </span> ${phone?.others?.USB}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">WLAN : </span> ${phone?.others?.WLAN}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Release Date : </span> ${phone?.releaseDate}</p>
-  <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">SLUG : </span> ${phone?.slug}</p>
-
-
+    <div class="flex justify-center">
+      <img src="${phone.image}" alt="Phone Image"/>
+    </div>
+    <h2 class="text-xl font-bold text-sky-800 flex justify-center p-4">Main Features</h2>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Display Size : </span> ${phone?.mainFeatures?.displaySize}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Chipset : </span> ${phone?.mainFeatures?.chipSet}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Storage : </span> ${phone?.mainFeatures?.storage}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Memory : </span> ${phone?.mainFeatures?.memory}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Sensors : </span> ${phone?.mainFeatures?.sensors}</p>
+    <h2 class="text-xl font-bold text-sky-800 flex justify-center p-4">Others</h2>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Bluetooth: </span> ${phone?.others?.Bluetooth}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">GPS : </span> ${phone?.others?.GPS}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">NFC : </span> ${phone?.others?.NFC}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Radio : </span> ${phone?.others?.Radio}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">USB : </span> ${phone?.others?.USB}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">WLAN : </span> ${phone?.others?.WLAN}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">Release Date : </span> ${phone?.releaseDate}</p>
+    <p class="pt-1 text-sky-900"><span class="font-bold text-indigo-950">SLUG : </span> ${phone?.slug}</p>
   `;
-  // show the modal
+
+  // Apply blur effect to the background
+  document.getElementById("blur-bg").classList.add("blur-background");
+
+  // Show the modal
   show_details_modal.showModal();
 };
+
+
+// Remove blur effect when modal is closed
+const removeBlur = () => {
+  document.getElementById("blur-bg").classList.remove("blur-background");
+};
+
 //handle search button
 const handleSearch = (isShowAll) => {
   toggleLoadingSpinner(true);
