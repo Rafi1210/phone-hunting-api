@@ -123,6 +123,19 @@ window.addEventListener('click', function(event) {
   }
 });
 
+// Add event listener for keydown events (e.g., when Esc is pressed)
+window.addEventListener('keydown', function(event) {
+  const modal = document.getElementById("show_details_modal");
+  
+  // Check if the Esc key was pressed (keyCode 27) and the modal is open
+  if (event.key === 'Escape' && modal.open) {
+    // Modal automatically closes on Esc, just remove the blur effect
+    modal.close(); // Optional: Ensures modal is closed
+    removeBlur();  // Remove the blur
+  }
+});
+
+
 
 //handle search button
 const handleSearch = (isShowAll) => {
