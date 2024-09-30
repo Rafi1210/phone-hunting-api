@@ -109,6 +109,21 @@ const removeBlur = () => {
   document.getElementById("blur-bg").classList.remove("blur-background");
 };
 
+// Add event listener to close modal when clicking outside
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById("show_details_modal");
+  const modalContent = document.getElementById("modal-content");
+
+  // If the modal is open and the click is outside of the modal content
+  if (modal.open && !modalContent.contains(event.target)) {
+    // Close the modal
+    modal.close();
+    // Remove the blur effect
+    removeBlur();
+  }
+});
+
+
 //handle search button
 const handleSearch = (isShowAll) => {
   toggleLoadingSpinner(true);
